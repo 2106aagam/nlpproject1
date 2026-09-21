@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History | Aagam NLP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand">Aagam<span>NLP</span></div>
+    <div class="navlinks"><a href="/">Analyzer</a><a class="active" href="/history">History</a><a href="/about">About</a></div>
+</nav>
+<main class="container page">
+    <div class="page-head">
+        <div><p class="eyebrow">DATABASE</p><h1>Analysis History</h1><p class="subtitle">Your latest 50 analyses are stored locally in SQLite.</p></div>
+        <button class="danger-btn" onclick="clearHistory()">Clear history</button>
+    </div>
+    <section class="card table-card">
+        {% if rows %}
+        <div class="table-wrap">
+            <table>
+                <thead><tr><th>Text</th><th>Sentiment</th><th>Confidence</th><th>Date</th></tr></thead>
+                <tbody>
+                {% for row in rows %}
+                    <tr>
+                        <td>{{ row[0] }}</td>
+                        <td><span class="pill {{ row[1]|lower }}">{{ row[1] }}</span></td>
+                        <td>{{ "%.1f"|format(row[2] * 100) }}%</td>
+                        <td>{{ row[3] }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+            <div class="empty"><div>📝</div><h2>No analyses yet</h2><p>Go to the analyzer and test some text.</p><a class="primary-link" href="/">Open Analyzer</a></div>
+        {% endif %}
+    </section>
+</main>
+<footer>© 2026 Aagam · NLP Sentiment Analyzer</footer>
+<script>
+async function clearHistory() {
+    if (!confirm("Delete all analysis history?")) return;
+    await fetch("/clear-history", {method:"POST"});
+    location.reload();
+}
+</script>
+</body>
+</html>
