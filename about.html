@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Aagam NLP</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="brand">Aagam<span>NLP</span></div>
+    <div class="navlinks"><a href="/">Analyzer</a><a href="/history">History</a><a class="active" href="/about">About</a></div>
+</nav>
+<main class="container page">
+    <section class="about-grid">
+        <div class="card about-card">
+            <p class="eyebrow">COLLEGE PROJECT</p>
+            <h1>NLP Sentiment Analyzer</h1>
+            <p>Natural Language Processing (NLP) is a branch of AI that helps computers work with human language.</p>
+            <p>This project demonstrates how text can be normalized, tokenized, scored with a sentiment lexicon, and classified as positive, neutral, or negative.</p>
+        </div>
+        <div class="card about-card">
+            <h2>Technology Stack</h2>
+            <ul>
+                <li>Python</li><li>Flask</li><li>HTML + CSS + JavaScript</li><li>SQLite</li><li>Rule-based NLP</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="card about-card">
+        <h2>How it works</h2>
+        <div class="steps">
+            <div><b>1</b><span>User enters text.</span></div>
+            <div><b>2</b><span>Python tokenizes and normalizes the text.</span></div>
+            <div><b>3</b><span>Words are matched against positive/negative vocabularies.</span></div>
+            <div><b>4</b><span>A sentiment score is calculated and classified.</span></div>
+            <div><b>5</b><span>The result is stored in SQLite history.</span></div>
+        </div>
+    </section>
+
+    <section class="card developer-card">
+        <div class="avatar">A</div>
+        <div><p class="eyebrow">DEVELOPED BY</p><h2>Aagam</h2><p>NLP Web Application · 2026</p></div>
+    </section>
+</main>
+<footer>© 2026 Aagam · NLP Sentiment Analyzer</footer>
+</body>
+</html>
